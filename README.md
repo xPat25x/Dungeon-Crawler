@@ -1,11 +1,12 @@
-```markdown
 # ░█▀▄░█▀▀░█░░░█▀▀░▀█▀░█▀▀░█▀▄░█▀▀
+
 # ░█▀▄░█▀▀░█░░░█▀▀░░█░░█▀▀░█▀▄░█▀▀
+
 # ░█░█░█░░░█▄▄░█░░░░▀░░▀▀▀░▀░▀░▀▀▀
 
 # **Dungeon Crawler: The Epic Pygame Quest**
 
-> *"In the depths of the dungeon, legends are born and heroes are forged in the heat of battle."*
+> _"In the depths of the dungeon, legends are born and heroes are forged in the heat of battle."_
 
 ---
 
@@ -57,7 +58,7 @@ pip install pygame
 - **Attack:** Left Mouse Button (Shoot arrows)
 - **Pause/Menu:** `ESC`
 
-*Tip: Master the controls to unleash your full potential and conquer the dungeon!*
+_Tip: Master the controls to unleash your full potential and conquer the dungeon!_
 
 ---
 
@@ -65,9 +66,9 @@ pip install pygame
 
 ```
 dungeon-crawler/
-├── assets/           
+├── assets/
 │   └── (Stunning graphics, immersive sounds, and cool fonts)
-├── levels/           
+├── levels/
 │   └── (CSV files mapping out treacherous tiles, cunning enemies, and secret exits)
 ├── main.py           # The heartbeat of the game: manages loops, menus, and level transitions.
 ├── world.py          # Crafts the expansive game world.
@@ -89,11 +90,55 @@ dungeon-crawler/
 
 ## 🎉 Join the Quest!
 
-Dive into a realm where every corner hides a secret, every enemy holds a challenge, and every victory feels monumental. Whether you’re in it for the nostalgia or the adrenaline rush, **Dungeon Crawler** promises an adventure you won't forget.
+Dive into a realm where every corner hides a secret, every enemy holds a challenge, and every victory feels monumental. Whether you're in it for the nostalgia or the adrenaline rush, **Dungeon Crawler** promises an adventure you won't forget.
 
-> *"Forge your destiny, one dungeon at a time."*
+> _"Forge your destiny, one dungeon at a time."_
 
 ---
 
-*Happy Gaming, Adventurer!*
+_Happy Gaming, Adventurer!_
+
+# Dungeon Crawler
+
+This game is built with pygame and has been optimized to run smoothly and look great. Below are some instructions and tips:
+
+## Running the Game
+
+- Ensure you have Python and pygame installed.
+- Run the game using:
+
+  python main.py
+
+## Performance Improvements
+
+- **Asset Loading:**
+  - All images and audio files are loaded using relative paths (e.g. `assets/images/tiles/`).
+  - Use pygame's `convert()` or `convert_alpha()` on loaded images (if not already) to improve rendering performance.
+- **Animation & Rendering:**
+  - Character animations and sprite flipping (using `pygame.transform.flip`) are optimized by updating only when necessary.
+  - Game loop timing is controlled to target FPS (see `constants.FPS`).
+- **Powerups:**
+  - Speed boosts have been integrated into the Character class with proper timing and reset logic.
+
+## Packaging for Distribution
+
+To distribute your game so that others can play it without setting up the development environment, you can use PyInstaller. For example:
+
+    pyinstaller --onefile --windowed --add-data "assets:assets" main.py
+
+This command packages your game, including the assets folder, into a single executable. Test the executable on a similar system to ensure it runs as expected.
+
+## Additional Suggestions
+
+- **Code Refactoring:**
+  - Consider caching transformed images if you notice performance bottlenecks related to frequent transformations.
+  - Profile your game loop to identify any CPU-intensive operations.
+- **User Experience:**
+  - Add a main menu, settings, and a pause screen to improve user interaction.
+  - Enhance audio with volume control and smooth transitions between background music and sound effects.
+
+Enjoy your game and happy coding!
+
+```
+
 ```
