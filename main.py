@@ -120,7 +120,7 @@ def scale_img(image, scale):
     return pygame.transform.scale(image, (w * scale, h * scale))
 
 # Lyd
-pygame.mixer.music.load("assets/audio/music.wav")
+pygame.mixer.music.load("assets/audio/music2.mp3")
 pygame.mixer.music.set_volume(0.3)
 pygame.mixer.music.play(-1, 0.0, 5000)
 shot_fx = pygame.mixer.Sound("assets/audio/arrow_shot.mp3")
@@ -248,9 +248,14 @@ def reset_game():
     world = World()
     world.process_data(world_data, tile_list, item_images, mob_animations)
 
-    temp_score = player.score  # behold eventuelt score
+    temp_score = player.score
+    temp_health = player.health
+    temp_speed = player.speed_multiplier
+
     player = world.player
     player.score = temp_score
+    player.health = temp_health
+    player.speed_multiplier = temp_speed
     player.alive = True
     enemy_list = world.character_list
 
@@ -491,13 +496,18 @@ while run:
                 item_group.empty()
                 fireball_group.empty()
 
+                temp_score = player.score
+                temp_health = player.health
+                temp_speed = player.speed_multiplier
+
                 world_data = load_level_data(level)
                 world = World()
                 world.process_data(world_data, tile_list, item_images, mob_animations)
 
-                temp_score = player.score
                 player = world.player
                 player.score = temp_score
+                player.health = temp_health
+                player.speed_multiplier = temp_speed
 
                 enemy_list = world.character_list
 
