@@ -240,6 +240,7 @@ def reset_game():
 
     level = 1
     start_intro = True
+    was_game_completed = game_completed
     game_completed = False
     pause_game = False
     in_shop = False
@@ -249,7 +250,7 @@ def reset_game():
     world.process_data(world_data, tile_list, item_images, mob_animations)
 
     temp_score = player.score
-    temp_health = player.health
+    temp_health = 100 if (was_game_completed or player.health <= 0) else player.health
     temp_speed = player.speed_multiplier
 
     player = world.player
