@@ -601,6 +601,15 @@ while run:
         # Håndtering av museklikk
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = event.pos
+            # Adjust mouse position if in fullscreen
+            if full_screen:
+                info = pygame.display.Info()
+                scale_factor = min(info.current_w / constants.SCREEN_WIDTH, info.current_h / constants.SCREEN_HEIGHT)
+                scaled_width = int(constants.SCREEN_WIDTH * scale_factor)
+                scaled_height = int(constants.SCREEN_HEIGHT * scale_factor)
+                x_offset = (info.current_w - scaled_width) // 2
+                y_offset = (info.current_h - scaled_height) // 2
+                pos = ((pos[0] - x_offset) / scale_factor, (pos[1] - y_offset) / scale_factor)
             # Hvis spillet er vunnet eller spilleren er død, sjekk restart-knappen
             if game_completed or (not player.alive):
                 if restart_button.rect.collidepoint(pos):
